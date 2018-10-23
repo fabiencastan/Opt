@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <core-util/binaryDataSerialize.h>
 
 #include "vec2.h"
 

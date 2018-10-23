@@ -2,6 +2,10 @@
 #ifndef CORE_MATH_MATRIX4X4_H_
 #define CORE_MATH_MATRIX4X4_H_
 
+#include "matrix3x3.h"
+#include "vec6.h"
+#include "eigenSolver.h"
+
 namespace ml {
 
 template <class FloatType>
@@ -852,7 +856,7 @@ public:
         for (int i = 0; i < 4; i++)
             for (int j = 0; j < 4; j++)
             {
-                result += to_string(matrix2[i][j]);
+                result += std::to_string(matrix2[i][j]);
                 if (i != 3 || j != 3)
                     result += seperator;
             }

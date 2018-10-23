@@ -2,9 +2,24 @@
 #ifndef CORE_MATH_DENSEMATRIX_H_
 #define CORE_MATH_DENSEMATRIX_H_
 
+template<typename T>
+class Matrix3x3;
+
+template<typename T>
+class Matrix4x4;
+
+#include "matrix4x4.h"
+#include "matrix3x3.h"
+#include "matrix2x2.h"
+#include <core-util/stringUtil.h>
+#include "mathVector.h"
+#include "sparseMatrix.h"
+#include "eigenSolver.h"
+
 namespace ml {
 
-template <class T> class DenseMatrix
+template <class T>
+class DenseMatrix
 {
 public:
 	DenseMatrix()
@@ -93,14 +108,14 @@ public:
 		}
 	}
 
-    DenseMatrix(const Matrix4x4<T> &m)
-    {
-        m_rows = 4;
-        m_cols = 4;
-        m_data.resize(16);
-        for (unsigned int element = 0; element < m_data.size(); element++)
-            m_data[element] = m[element];
-    }
+	DenseMatrix(const Matrix2x2<T> &m)
+	{
+		m_rows = 2;
+		m_cols = 2;
+		m_data.resize(4);
+		for (unsigned int element = 0; element < m_data.size(); element++)
+			m_data[element] = m[element];
+	}
 
 	DenseMatrix(const Matrix3x3<T> &m)
 	{
@@ -111,14 +126,18 @@ public:
 			m_data[element] = m[element];
 	}
 
-	DenseMatrix(const Matrix2x2<T> &m)
-	{
-		m_rows = 2;
-		m_cols = 2;
-		m_data.resize(4);
-		for (unsigned int element = 0; element < m_data.size(); element++)
-			m_data[element] = m[element];
-	}
+    DenseMatrix(const Matrix4x4<T> &m)
+    {
+        m_rows = 4;
+        m_cols = 4;
+        m_data.resize(16);
+        for (unsigned int element = 0; element < m_data.size(); element++)
+            m_data[element] = m[element];
+    }
+
+
+
+
 
     void resize(size_t rows, size_t cols, T clearValue = (T)0.0)
 	{

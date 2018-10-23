@@ -2,6 +2,8 @@
 #ifndef CORE_MATH_MATRIX3X3_H_
 #define CORE_MATH_MATRIX3X3_H_
 
+#include "eigenSolver.h"
+
 namespace ml {
 
 template <class FloatType>
@@ -380,7 +382,7 @@ public:
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
             {
-                result += to_string(matrix2[i][j]);
+                result += std::to_string(matrix2[i][j]);
                 if (i != 3 || j != 3)
                     result += seperator;
             }

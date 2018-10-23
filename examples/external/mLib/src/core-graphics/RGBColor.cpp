@@ -1,4 +1,10 @@
 
+#include <core-graphics/RGBColor.h>
+#include <string>
+#include <core-base/common.h>
+#include <core-util/utility.h>
+#include <core-math/vec4.h>
+
 namespace ml
 {
 

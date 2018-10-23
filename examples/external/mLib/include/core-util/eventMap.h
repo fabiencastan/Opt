@@ -1,3 +1,6 @@
+#ifndef _EVENT_MAP_H_
+#define _EVENT_MAP_H_
+#include <map>
 
 namespace ml
 {
@@ -15,3 +18,4 @@ private:
 };
 
 }
+#endif

@@ -6,12 +6,13 @@
 #include <cmath>
 #include <iostream>
 #include <cassert>
+#include <core-util/binaryDataSerialize.h>
 
 namespace ml {
 
 //! 1D vector (I know it's a joke, but we need it for compatibility reasons)
 template <class T>
-class vec1 : public BinaryDataSerialize< vec1<T> >
+class vec1 : public BinaryDataSerialize< vec1< T > >
 {
 public:
 	vec1(T v) {
