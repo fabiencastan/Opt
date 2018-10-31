@@ -7,36 +7,45 @@
 
 FIND_LIBRARY (Terra_LIBRARY_RELEASE NAMES terra
     PATHS
-    ENV LD_LIBRARY_PATH
-    ENV LIBRARY_PATH
-    /usr/lib64
-    /usr/lib
-    /usr/local/lib64
-    /usr/local/lib
-    /opt/local/lib
-    $ENV{Terra_ROOT}/lib
+      ${Terra_ROOT}
+      $ENV{Terra_ROOT}
+      $ENV{LD_LIBRARY_PATH}
+      $ENV{LIBRARY_PATH}
+      /usr
+      /usr/local
+      /opt/local
+    PATH_SUFFIXES
+      lib
+      lib64
     )
 	
 FIND_LIBRARY (Terra_LIBRARY_DEBUG NAMES terra
     PATHS
-    ENV LD_LIBRARY_PATH
-    ENV LIBRARY_PATH
-    /usr/lib64
-    /usr/lib
-    /usr/local/lib64
-    /usr/local/lib
-    /opt/local/lib
-    $ENV{Terra_ROOT}/lib
+      ${Terra_ROOT}
+      $ENV{Terra_ROOT}
+      $ENV{LD_LIBRARY_PATH}
+      $ENV{LIBRARY_PATH}
+      /usr
+      /usr/local
+      /opt/local
+    PATH_SUFFIXES
+      lib
+      lib64
     )	
 	
 	
 
 FIND_PATH (Terra_INCLUDES terra/terra.h
-    ENV CPATH
-    /usr/include
-    /usr/local/include
-    /opt/local/include
-    $ENV{Terra_ROOT}/include
+    PATHS
+      ${Terra_ROOT}
+      $ENV{Terra_ROOT}
+      ${CPATH}
+      $ENV{CPATH}
+      /usr
+      /usr/local
+      /opt/local
+    PATH_SUFFIXES
+      include
     )
  
 IF(Terra_INCLUDES AND Terra_LIBRARY_RELEASE)
@@ -53,11 +62,11 @@ IF(Terra_FOUND)
   find_package(ZLIB REQUIRED)
   
    IF (CMAKE_CONFIGURATION_TYPES OR CMAKE_BUILD_TYPE)
-        SET(Terra_LIBRARY optimized ${Terra_LIBRARY_RELEASE} debug ${Terra_LIBRARY_DEBUG} ${ZLIB_LIBRARIES} dl tinfo)
+        SET(Terra_LIBRARY optimized ${Terra_LIBRARY_RELEASE} debug ${Terra_LIBRARY_DEBUG} ${ZLIB_LIBRARIES} dl)
       ELSE()
         # if there are no configuration types and CMAKE_BUILD_TYPE has no value
         # then just use the release libraries
-        SET(Terra_LIBRARY ${Terra_LIBRARY_RELEASE} ${ZLIB_LIBRARIES} dl tinfo)
+        SET(Terra_LIBRARY ${Terra_LIBRARY_RELEASE} ${ZLIB_LIBRARIES} dl)
       ENDIF()
   IF(NOT Terra_FIND_QUIETLY)
     MESSAGE(STATUS "Found Terra: ${Terra_LIBRARIES}")

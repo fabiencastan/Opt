@@ -43,7 +43,7 @@ cuda_add_executable(${EXAMPLE_PROJECT_NAME}
 set_property(TARGET ${EXAMPLE_PROJECT_NAME} PROPERTY CUDA_STANDARD 11)
 
 target_include_directories(${EXAMPLE_PROJECT_NAME} PUBLIC src ${CMAKE_CURRENT_SOURCE_DIR} ../shared/ )
-target_include_directories(${EXAMPLE_PROJECT_NAME} PUBLIC )
+target_include_directories(${EXAMPLE_PROJECT_NAME} PUBLIC ${OPENMESH_INCLUDE_DIR})
 
 #find_library(OpenMesh_CORE_LIBRARY libOpenMeshCore.a ../external/OpenMesh/lib/linux)
 #find_library(OpenMesh_TOOLS_LIBRARY libOpenMeshTools.a ../external/OpenMesh/lib/linux)
